@@ -1,126 +1,97 @@
-# Python Package Template
+# typal
 
-Production-ready Python package template with modern tooling, strict typing, and scalable project structure.
+A lightweight collection of reusable typing utilities for modern Python.
+
+## Overview
+
+typal provides small, composable building blocks for Python type annotations.
+
+It avoids type explosion and focuses on clarity, reuse, and native typing features.
+
+---
 
 ## Features
 
-- Modern `uv`-based workflow
-- `src/` package layout
-- Ruff linting and formatting
-- Pyright static type checking
-- pytest testing setup
-- GitHub Actions CI
-- PEP 621 packaging
-- Pre-configured pre-commit hooks
-- Typed package support via `py.typed`
+- Optional type helpers (`Opt[T]`)
+- Functional type aliases (`Mapper`, `Predicate`, `Action`)
+- Collection shortcuts (`Seq[T]`, `List[T]`)
+- Common type unions (`StrOrInt`, `PathOrStr`, etc.)
+- Enum-aware type utilities
+- Clean separation of typing concerns
 
 ---
 
-## Project Structure
+## Installation
 
-```text
-.
-├── .github/
-│   └── workflows/
-├── src/
-│   └── package_name/
-├── tests/
-├── .gitignore
-├── .pre-commit-config.yaml
-├── LICENSE
-├── pyproject.toml
-└── README.md
-```
-
----
-
-## Requirements
-
-- Python 3.13+
-- `uv`
-
-Install `uv` by following the official documentation:
-
-- https://docs.astral.sh/uv/getting-started/installation/
-
----
-
-## Quick Start
-
-### Create virtual environment
+Using uv:
 
 ```bash
-uv venv
+uv add typal
 ```
 
-### Install dependencies
+Or pip:
 
 ```bash
-uv sync
+pip install typal
 ```
 
-### Run tests
+## Usage
 
-```bash
-uv run pytest
+### Optionals
+```python
+from typal.optionals import Opt
+
+value: Opt[int] = None
 ```
 
-### Run linting
+### Collections
+```python
+from typal.collections import Seq
 
-```bash
-uv run ruff check .
+def process(items: Seq[str]) -> None:
+    ...
 ```
 
-### Run formatting
+### Functional types
+```python
+from typal.functional import Mapper, Predicate, Action
 
-```bash
-uv run ruff format .
+def transform(x: int) -> str:
+    return str(x)
+
+m: Mapper[int, str] = transform
 ```
 
-### Run type checking
+### Unions
+```python
+from typal.unions import StrOrInt, PathOrStr
 
-```bash
-uv run pyright
+def load(path: PathOrStr) -> StrOrInt:
+    ...
 ```
 
----
+### Tuples
+```python
+from typal.tuples import Pair, Triple
 
-## Included Tooling
+Point = Pair[float]
+RGB = Triple[int]
+```
 
-### Ruff
+## Design Philosophy
 
-Used for:
-- linting
-- formatting
-- import sorting
+typal follows these principles:
 
-### Pyright
+- Prefer native Python typing (`|`, `list[T]`, `dict[K, V]`)
+- Avoid combinatorial type explosion
+- Provide reusable abstractions, not exhaustive aliases
+- Keep the API small, predictable, and composable
 
-Used for strict static type checking.
+## Non-goals
 
-### pytest
+typal does NOT aim to:
 
-Used for testing.
-
-### pre-commit
-
-Runs automated checks before commits.
-
----
-
-## Design Principles
-
-This template prioritizes:
-
-- simplicity
-- strict typing
-- reproducibility
-- scalable project structure
-- modern Python standards
-- minimal tooling friction
-
----
-
-## License
-
-MIT
+- Replace Python's built-in typing system
+- Provide exhaustive pre-generated type variants
+- Introduce framework-specific abstractions
+- Replace domain models

@@ -1,0 +1,5 @@
+type Many[T] = tuple[T, ...]
+type Double[T] = tuple[T, T]
+type Triple[T] = tuple[T, T, T]
+type Quadruple[T] = tuple[T, T, T, T]
+type Quintuple[T] = tuple[T, T, T, T, T]
