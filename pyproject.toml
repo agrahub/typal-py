@@ -1,6 +1,6 @@
 [project]
 name = "typal"
-version = "0.1.2"
+version = "0.1.3"
 description = "A lightweight collection of typing helpers, aliases, protocols, and foundational type utilities for modern Python applications."
 authors = [
     { name = "Agra Bima Yuda", email = "hub.agrayuda@gmail.com" }
