@@ -1,6 +1,6 @@
 [project]
 name = "typal"
-version = "0.1.0"
+version = "0.1.1"
 description = "A lightweight collection of typing helpers, aliases, protocols, and foundational type utilities for modern Python applications."
 authors = [
     { name = "Agra Bima Yuda", email = "hub.agrayuda@gmail.com" }
@@ -26,7 +26,7 @@ build-backend = "hatchling.build"
 sources = ["src"]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src"]
+packages = ["src/typal"]
 
 [tool.ruff]
 line-length = 88
